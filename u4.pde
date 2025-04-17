@@ -6,43 +6,57 @@ color brown = #764F1F;
 
 void setup(){
   size(1200,1000);
-  
-  
+    tree (random(50,300), random(200,700));
+    tree (random(50,300), random(200,700));
+    tree (random(50,300), random(200,700));
+    tree (random(50,300), random(200,700));
 }
 
 void draw(){
-  tree (50,50);
+ // tree (random(50,300), random(100,700));
+//  tree(200,100);
   
 }
 
 
 
-void tree (int x, int y){
+void tree (float x, float y){
  pushMatrix();
  translate(x,y);
+// scale(s);
 
- branch(random(100,300), random(100,300), random(0.25,1));
- //leaves();
- leaves(50,50);
- leaves(100,100);
- popMatrix();
+float r,g,b;
+r= random(0,255);
+g= random(0,255);
+b= random(0,255);
+
  stroke (brown);
  strokeWeight(18);
-   line (150,200,150,280); // trunk
+   line (120,120,120,200); // trunk
+   
+ branch(random(00,200), random(50,90), random(0.25,1));
+ branch(random(00,200), random(50,90), random(0.25,1));
+ branch(random(00,200), random(50,90), random(0.25,1));
+ branch(random(00,200), random(50,90), random(0.25,1));
+ 
+ //leaves();
+ leaves(50,50, r,g,b);
+ leaves(100,100, r,g,b);
+    popMatrix();
 }
+
+
 
 void branch(float x, float y, float s){
   fill(brown);
   stroke(brown);
-  strokeWeight(3);
-  
+  strokeWeight(7);
+  line(120,120,x,y);
 }
 
-void leaves(int x, int y){
+void leaves(float x, float y, float r, float g, float b){
   fill (green);
- // tint(r);
- // float r=0;
   stroke(green-50);
   strokeWeight(2);
-  ellipse(x,y, 50,40);
+  ellipse(x,y, (random(50,100)),40);
 }
