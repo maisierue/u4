@@ -1,62 +1,82 @@
 //U4 SOFIE T
 
 color green = #61B962;
+color dgreen = #96B7AA;
 color brown = #764F1F;
+color pink = #F27D94;
+color lpink = #E8C2DD;
+float angle;
+float a;
+float r, g, b, o;
 
 
-void setup(){
-  size(1200,1000);
-   tree (random(50,300), random(200,700));
- //   tree (random(50,300), random(200,700));
-   tree (random(50,300), random(200,700));
-  tree (random(50,300), random(200,700));
+void setup() {
+  r= random(0, 255);
+  g= random(0, 255);
+  b= random(0, 255);
+  o= random(0, 255);
+
+  fill(dgreen); //bg
+  rect (0, 400, 1200, 600);
+  fill(pink); //bg
+  rect (0, 0, 1200, 400);
+
+  size(1200, 1000);
+  tree (random(20, 150), random(200, 300));
+  tree (random(20, 150), random(200, 300));
+  tree (random(20, 150), random(200, 300));
+  tree (random(20, 150), random(200, 300));
+  tree (random(20, 150), random(200, 300));
+  tree (random(0, 50), random(500, 800));
+  tree (random(0, 50), random(500, 800));
+  tree (random(0, 50), random(500, 800));
+  tree (random(0, 50), random(500, 800));
+  tree (random(0, 50), random(500, 800));
+
+  tree (random(980, 1100), random(180, 400));
+  tree (random(980, 1100), random(180, 400));
+  tree (random(1000, 1100), random(180, 400));
 }
 
-void draw(){
- // tree (random(50,300), random(100,700));
+void tree (float x, float y) {
+  pushMatrix();
+  translate(x, y);
+  // scale(s);
 
+
+
+  stroke (brown);
+  strokeWeight(18);
+  line (120, 120, 120, random(200, 255)); // trunk
   
+int br = 0;//branches
+while (br < 4){
+   branch(random(00, 200), random(50, 90), random(0.25, 1));
+   br = br+1;
+}
+
+
+  popMatrix();
 }
 
 
 
-void tree (float x, float y){
- pushMatrix();
- translate(x,y);
-// scale(s);
-
-float r,g,b;
-r= random(0,255);
-g= random(0,255);
-b= random(0,255);
-
- stroke (brown);
- strokeWeight(18);
-   line (120,120,120,200); // trunk
-   
- branch(random(00,200), random(50,90), random(0.25,1));
- branch(random(00,200), random(50,90), random(0.25,1));
- branch(random(00,200), random(50,90), random(0.25,1));
- branch(random(00,200), random(50,90), random(0.25,1));
- 
- //leaves();
- leaves(50,50, r,g,b,o);
- leaves(100,100, r,g,b,o);
-    popMatrix();
-}
-
-
-
-void branch(float x, float y, float s){
+void branch(float x, float y, float s) {
   fill(brown);
   stroke(brown);
   strokeWeight(7);
-  line(120,120,x,y);
+  line(120, 120, x, y);
+
+  int j = 0;
+  while (j < 2) {
+    leaves(random(x-20, x+20), random(y-10, y+10), r, g, b, random(130, 210));
+    j=j+1;
+  }
 }
 
-void leaves(float x, float y, float r, float g, float b, float o){
-  fill (97,185,98,(random(250-255)));
-  stroke(green-50);
+void leaves(float x, float y, float r, float g, float b, float o) {
+  fill (232, 194, 221, o);
+  stroke(lpink-50);
   strokeWeight(2);
-  ellipse(x,y, (random(50,100)),40);
+  ellipse(x, y, (random(50, 100)), random(20, 100));
 }
