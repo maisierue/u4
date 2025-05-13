@@ -11,10 +11,7 @@ float r, g, b, o;
 
 
 void setup() {
-  r= random(0, 255);
-  g= random(0, 255);
-  b= random(0, 255);
-  o= random(0, 255);
+  r= random(0, 255); g= random(0, 255); b= random(0, 255); o= random(0, 255);
 
   fill(dgreen); //bg
   rect (0, 400, 1200, 600);
@@ -22,44 +19,63 @@ void setup() {
   rect (0, 0, 1200, 400);
 
   size(1200, 1000);
-  tree (random(20, 150), random(200, 300));
-  tree (random(20, 150), random(200, 300));
-  tree (random(20, 150), random(200, 300));
-  tree (random(20, 150), random(200, 300));
-  tree (random(20, 150), random(200, 300));
-  tree (random(0, 50), random(500, 800));
-  tree (random(0, 50), random(500, 800));
-  tree (random(0, 50), random(500, 800));
-  tree (random(0, 50), random(500, 800));
-  tree (random(0, 50), random(500, 800));
-
-  tree (random(980, 1100), random(180, 400));
-  tree (random(980, 1100), random(180, 400));
-  tree (random(1000, 1100), random(180, 400));
+  
+  int tr1 = 0;//cluster of trees1
+  int tr2 = 0;//cluster of trees2
+  while (tr1 < 5){
+  tree (random(20, 150), random(200, 400));
+   tr1 = tr1+1;
 }
+  while (tr2 < 4){
+ tree (random(980, 1100), random(180, 400));
+   tr2 = tr2+1;
+}
+
+  house(200,200);
+}
+
+
+void house(float x, float y){
+  pushMatrix();
+  translate (x,y);
+  roof(200,200);
+  
+
+  fill(brown);//walls
+  stroke(255);
+  strokeWeight(2);
+  rect(x,y,170,150);
+
+  //window();
+  //door();
+  //fence();
+  
+  popMatrix();
+}
+
+void roof(float x,float y){
+  fill(brown);
+  stroke(255);
+  strokeWeight(2);
+  triangle(x,y,x+85,y+15, x+170, y);
+  
+}
+
 
 void tree (float x, float y) {
   pushMatrix();
   translate(x, y);
-  // scale(s);
-
-
-
   stroke (brown);
   strokeWeight(18);
   line (120, 120, 120, random(200, 255)); // trunk
   
-int br = 0;//branches
-while (br < 4){
+  int br = 0;//branches
+  while (br < 4){
    branch(random(00, 200), random(50, 90), random(0.25, 1));
    br = br+1;
 }
-
-
   popMatrix();
 }
-
-
 
 void branch(float x, float y, float s) {
   fill(brown);
