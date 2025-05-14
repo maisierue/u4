@@ -3,6 +3,7 @@
 color green = #61B962;
 color dgreen = #96B7AA;
 color brown = #764F1F;
+color lbrown = #B77D00;
 color pink = #F27D94;
 color lpink = #E8C2DD;
 float angle;
@@ -38,16 +39,20 @@ void setup() {
 void house(float x, float y){
   pushMatrix();
   translate (x,y);
-  roof(200,200);
+  roof(x,y);
   
-
   fill(brown);//walls
   stroke(255);
-  strokeWeight(2);
+  strokeWeight(4);
   rect(x,y,170,150);
+  
+  strokeWeight(3);//ipink icing lining
+  stroke(pink);
+  line(x,y+10,x+170,y+10);
+  line(x,y+140,x+170,y+140);
 
-  //window();
-  //door();
+  window(x,y,0);
+  door(x,y,0);
   //fence();
   
   popMatrix();
@@ -56,11 +61,22 @@ void house(float x, float y){
 void roof(float x,float y){
   fill(brown);
   stroke(255);
-  strokeWeight(2);
-  triangle(x,y,x+85,y+15, x+170, y);
-  
+  strokeWeight(4);
+  triangle(x,y,x+85,y-random(70,100), x+170, y);
 }
 
+void door(float x, float y, float x2){
+  fill (lbrown);
+  stroke(255);
+  strokeWeight(2);
+  rect(x+random(15,70), y+100, x2+random(15,50), y-150); 
+}
+void window(float x, float y, float x2){
+  fill (lbrown);
+  stroke(255);
+  strokeWeight(2);
+  rect(x+random(10,50), y+35, x2+random(50,120), y-160); 
+}
 
 void tree (float x, float y) {
   pushMatrix();
