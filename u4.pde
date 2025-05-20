@@ -9,6 +9,7 @@ color lpink = #E8C2DD;
 float angle;
 float a;
 float r, g, b, o;
+float x2 = 0;
 
 
 void setup() {
@@ -53,6 +54,7 @@ void house(float x, float y){
 
   window(x,y,0);
   door(x,y,0);
+  brick(x+random(10,100),y+random(10,100), x2+random(10,40));
   //fence();
   
   popMatrix();
@@ -62,7 +64,7 @@ void roof(float x,float y){
   fill(brown);
   stroke(255);
   strokeWeight(4);
-  triangle(x,y,x+85,y-random(70,100), x+170, y);
+  triangle(x,y,x+85,y-random(40,100), x+170, y);
 }
 
 void door(float x, float y, float x2){
@@ -76,6 +78,12 @@ void window(float x, float y, float x2){
   stroke(255);
   strokeWeight(2);
   rect(x+random(10,50), y+35, x2+random(50,120), y-160); 
+}
+
+void brick(float x, float y, float x2){
+  ellipse(x, y, x2, x2);
+  
+  
 }
 
 void tree (float x, float y) {
