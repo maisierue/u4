@@ -47,6 +47,12 @@ void house(float x, float y){
   strokeWeight(4);
   rect(x,y,170,150);
   
+      int rock = 0;//branches
+  while (rock < 20){
+ brick(x+random(10,140),y+random(10,140), x2+random(10,30));
+   rock = rock+1;
+ }
+ 
   strokeWeight(3);//ipink icing lining
   stroke(pink);
   line(x,y+10,x+170,y+10);
@@ -54,7 +60,8 @@ void house(float x, float y){
 
   window(x,y,0);
   door(x,y,0);
-  brick(x+random(10,100),y+random(10,100), x2+random(10,40));
+  
+  //brick(x+random(10,100),y+random(10,100), x2+random(10,30));
   //fence();
   
   popMatrix();
@@ -82,7 +89,7 @@ void window(float x, float y, float x2){
 
 void brick(float x, float y, float x2){
   ellipse(x, y, x2, x2);
-  
+  fill(pink);
   
 }
 
