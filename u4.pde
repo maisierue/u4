@@ -6,6 +6,8 @@ color brown = #764F1F;
 color lbrown = #B77D00;
 color pink = #F27D94;
 color lpink = #E8C2DD;
+color cream =  #E3E0D0;
+
 float angle;
 float a;
 float r, g, b, o;
@@ -32,8 +34,12 @@ void setup() {
  tree (random(980, 1100), random(180, 400));
    tr2 = tr2+1;
 }
-
-  house(200,200);
+  int hosu = 0; //houses
+  while (hosu < 5){
+ house (random(160, 250), random(180, 370));
+   hosu = hosu+1;
+  //house(200,200);
+}
 }
 
 
@@ -43,13 +49,13 @@ void house(float x, float y){
   roof(x,y);
   
   fill(brown);//walls
-  stroke(255);
+  stroke(cream);
   strokeWeight(4);
   rect(x,y,170,150);
   
       int rock = 0;//branches
   while (rock < 20){
- brick(x+random(10,140),y+random(10,140), x2+random(10,30));
+ brick(x+random(20,140),y+random(25,120), x2+random(5,15), random(130, 210));
    rock = rock+1;
  }
  
@@ -57,40 +63,49 @@ void house(float x, float y){
   stroke(pink);
   line(x,y+10,x+170,y+10);
   line(x,y+140,x+170,y+140);
-
   window(x,y,0);
   door(x,y,0);
   
-  //brick(x+random(10,100),y+random(10,100), x2+random(10,30));
-  //fence();
-  
+    int fe = 0;//branches
+    int ice = 0;
+  while (fe < 7){
+ fence(x+ice,y,0,0);
+   fe = fe+1;
+   ice = ice + 30; //frosting moves and multiplies
+  }
   popMatrix();
 }
 
 void roof(float x,float y){
   fill(brown);
-  stroke(255);
+  stroke(cream);
   strokeWeight(4);
   triangle(x,y,x+85,y-random(40,100), x+170, y);
 }
 
 void door(float x, float y, float x2){
   fill (lbrown);
-  stroke(255);
+  stroke(cream);
   strokeWeight(2);
-  rect(x+random(15,70), y+100, x2+random(15,50), y-150); 
+  rect(x+random(15,70), y+110, x2+random(15,50), y-150); 
 }
 void window(float x, float y, float x2){
   fill (lbrown);
   stroke(255);
   strokeWeight(2);
-  rect(x+random(10,50), y+35, x2+random(50,120), y-160); 
+  rect(x+random(10,50), y+55, x2+random(30,60), 68); 
 }
 
-void brick(float x, float y, float x2){
+void brick(float x, float y, float x2, float o){
+  fill(197, 142, 206, o);
+  strokeWeight(2);
   ellipse(x, y, x2, x2);
-  fill(pink);
-  
+}
+
+void fence (float x, float y, float x2, float y2){
+  fill(255,255,255,200);
+  strokeWeight(0);
+  ellipse (x,y+160,40,20);
 }
 
 void tree (float x, float y) {
