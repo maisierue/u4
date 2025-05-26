@@ -1,5 +1,4 @@
 //U4 SOFIE T
-
 color green = #61B962;
 color dgreen = #96B7AA;
 color brown = #7C4E1D;
@@ -14,7 +13,6 @@ float a;
 float r, g, b, o;
 float x2 = 0;
 
-
 void setup() { //sur l'ecran
   r= random(0, 255); g= random(0, 255); b= random(0, 255); o= random(0, 255);
 
@@ -25,8 +23,11 @@ void setup() { //sur l'ecran
   rect (0, 0, 1200, 400);
   size(1200, 1000); 
   
-  mint(200,200,100);
-  mint (900,100,50);
+  int min = 0;
+  while (min < 20){
+ mint (random(20, 970), random(20, 300), random(0.15,1));//mints in the sky
+   min = min+1;
+  }
   
   int tr1 = 0;//cluster of trees1
   int tr2 = 0;//cluster of trees2
@@ -148,28 +149,49 @@ void leaves(float x, float y, float r, float g, float b, float o) {
   ellipse(x, y, (random(50, 100)), random(20, 100));
 }
 
+//mint=================================================
 void mint(float x, float y, float r){ // pattern(); 
   pushMatrix();
-  translate(x,y,r);
+  translate(x,y);
+  scale(r);
   stroke(220);
   strokeWeight(6);
   fill(255);
-  ellipse(x,y,r,r);
-  
- pattern(x,y,x);
- 
- stroke(220);
+
+ stroke(220); //outside circle thing
  strokeWeight(6);
  fill(255,255,255,0);
  ellipse(x,y,r,r);
+ mintc(x,y);
  popMatrix();
 }
 
-void pattern(float x, float y, float xy){
+void mintc(float x, float y){
+  pushMatrix ();
+
+  fill(255);
+  ellipse(0,0,100,100); //white circle
+    
   fill(red);
-  strokeWeight(4);
-  stroke (red);
-  triangle(x,y,x+x/4-5,y-x/8, x+x/4, y);//lots of math ahhahahahah
+  strokeWeight(2);
+  stroke(red);
   
-  
+  int rot = 0;
+  while (rot < 8) {
+  triangle (0,-10,50,0,0,10);
+  rotate(radians(45));
+    rot=rot+1; //red inside mint thing
+  }
+ 
+    fill(250);
+    strokeWeight(4);
+    stroke(250);
+    
+  int rota = 0;
+  while (rota < 8) {
+  triangle (0,-10,15,0,0,10);
+  rotate(radians(45));
+    rota=rota+1; //details white triangles inside red
+  }
+  popMatrix();
 }
